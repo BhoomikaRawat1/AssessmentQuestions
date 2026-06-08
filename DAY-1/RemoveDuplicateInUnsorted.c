@@ -27,21 +27,30 @@ struct node* insert(struct node* head, int val)
 
     return head;
 }
-void removeduplicate(struct node* head){
-    struct node* temp;
-    struct node* curr=head;
-    while(curr!=NULL && curr->next!=NULL){
-      if(curr->data==curr->next->data){
-        temp=curr->next;
-        // curr->next=curr->next->next;
-        curr->next=temp->next;
 
-        free(temp);
+void removeDuplicate(struct node* head){
+    struct node *curr, *runner, *temp;
+
+    curr = head;
+
+    while(curr != NULL){
+
+        runner = curr;
+
+        while(runner->next != NULL){
+
+            if(curr->data == runner->next->data){
+                temp = runner->next;
+                runner->next = temp->next;
+                free(temp);
+            }
+            else{
+                runner = runner->next;
+            }
+        }
+
+        curr = curr->next;
     }
-    else{
-        curr=curr->next;
-    }
-   }
 }
 void display(struct node* head)
 {
@@ -63,9 +72,10 @@ int main(){
     scanf("%d",&val);
     head=insert(head,val);
    }
-   removeduplicate(head);
+   removeDuplicate(head);
   
    display(head);
    return 0;
   
 }
+
