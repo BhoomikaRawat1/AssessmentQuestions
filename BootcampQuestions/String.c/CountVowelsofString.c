@@ -8,7 +8,7 @@ int main(){
     if(str[i]=='A' || str[i]=='E' || str[i]=='I' || str[i]=='O' ||
     str[i]=='U' || str[i]=='a' || str[i]=='e' || str[i]=='i' || str[i]=='o' || 
     str[i]=='u'){
-        count++;
+        count++; 
     }
    }
    printf("vowels in a string %d",count);
